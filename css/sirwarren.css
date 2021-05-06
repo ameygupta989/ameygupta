@@ -1,0 +1,53 @@
+*{
+	padding: 0;
+	margin: 0;
+}
+.text{
+	text-align: center;
+	 font-family: 'Ubuntu', sans-serif;
+	 text-decoration: underline;
+	 padding: 33px 30px;
+     text-shadow: 2px 2px grey;
+     background-color: #f6f5f4;
+}
+.para{
+	text-align: center;
+	font-family: 'Ubuntu', sans-serif;
+	padding: 25px 20px;
+	font-size: 25px;
+}
+.paras{
+	text-align: center;
+	padding: 20px 15px;
+	font-size: 20px;
+}
+.parass{
+   	text-align: center;
+   	font-size: 20px;
+   	padding: 20px 15px;	
+}
+.parasss{
+	text-align: center;
+	font-size: 20px;
+	padding: 20px 15px;
+}
+.parassss{
+	text-align: center;
+	font-size: 20px;
+	padding: 20px 15px;
+}
+.harvard{
+	text-align: center;
+	font-size: 20px;
+	padding: 20px 15px;
+}
+.cambridgeMA{
+	text-align: center;
+	font-size: 20px;
+	padding: 20px 15px;
+}
+.pages{
+    text-align: center;
+    font-size: 30px;
+    padding: 50px 30px;
+}
