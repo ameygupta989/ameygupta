@@ -1,0 +1,56 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+.camma{
+	text-align: center;
+	 font-family: 'Ubuntu', sans-serif;
+	 text-decoration: underline;
+	 padding: 33px 30px;
+     text-shadow: 2px 2px white;
+     background-color: #40E0D0;
+}
+.AIR1{
+	text-align: center;
+	padding: 30px 15px;
+	font-size: 20px;
+}
+.NTSEcleared{
+	text-align: center;
+	padding: 20px 10px;
+	font-size: 20px;
+}
+.bookie{
+	text-align: center;
+	padding: 20px 10px;
+	font-size: 20px;
+}
+.house2{
+	text-align: center;
+	padding: 20px 10px;
+	font-size: 20px;
+}
+.know{
+	text-align: center;
+	padding: 20px 10px;
+	font-size: 20px;
+}
+.pens{
+	text-align: center;
+	padding: 20px 10px;
+	font-size: 20px;
+}
+.pencil{
+	text-align: right;
+	font-size: 20px;
+}
+.lasts{
+	text-align:center;
+	font-size: 30px;
+	padding: 50px 30px;
+}
+.homee{
+	text-align:center;
+	font-size: 30px;
+	padding: 50px 30px;
+}

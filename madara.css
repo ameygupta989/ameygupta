@@ -1,0 +1,47 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+.text{
+	text-align: center;
+	 font-family: 'Ubuntu', sans-serif;
+	 text-decoration: underline;
+	 padding: 33px 30px;
+     text-shadow: 2px 2px orchid;
+     background-color: #C1FF33;
+}
+.harvard{
+	text-align: center;
+	padding: 30px 15px;
+	font-size: 20px;
+}
+.logo{
+	text-align: center;
+	padding: 20px 15px;
+	font-size: 20px;
+}
+.pair{
+	text-align: center;
+	padding: 20px 15px;
+	font-size: 20px;
+}
+.MIT{
+	text-align:center;
+	padding: 20px 15px;
+	font-size: 20px;
+}
+.hardwork{
+	text-align:center;
+	padding: 20px 15px;
+	font-size: 20px;
+}
+.number{
+	text-align:center;
+	padding: 20px 15px;
+	font-size: 20px;
+}
+.pages{
+    text-align: center;
+    font-size: 30px;
+    padding: 50px 30px;
+}
