@@ -1,0 +1,1108 @@
+<!DOCTYPE HTML>
+<!--
+	Hyperspace by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		
+		<title>Get Source Code by Amey</title>
+		
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="description" content="Amey Gupta">
+		<meta name="keywords" content="ameygupta, amey gupta,developer, india, ">
+		<meta name="author" content="Amey Gupta (@ameygupta)">
+		<link rel="stylesheet" href="css/main.css">
+
+		<link rel="apple-touch-icon" sizes="180x180" href="img/miami.jpeg">
+		<!--link rel="icon"  href="img/It's Me.jpeg" sizes="32x32"-->
+		<!--link rel="icon"  href="img/harvard.jpeg" sizes="16x16"-->
+		<!--link rel="manifest" href="static/icons/manifest.json">
+		<link rel="shortcut icon" href="static/icons/favicon.ico"-->
+		<meta name="msapplication-config" content="static/icons/browserconfig.xml">
+		<meta name="theme-color" content="#2c3e50">
+    <!--script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script-->
+
+	</head>
+	<body>
+    <div class="iframe-container">
+    <iframe width="1360" height="500" src="https://www.youtube.com/embed/OqBbq781WcY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+		<!-- Header -->
+
+			
+
+	<header id="header">
+		<a></a>
+		    <nav>
+			<ul>
+				<li><a href="blog.html">Amey Gupta</a></li>
+                <!--li><a href="javascript.html">Play Some Games</a></li-->
+				<li><a href="https://www.apple.com/in/ios/ios-14/" target="_blank">iOS</a></li>
+				<li><a href="https://www.apple.com/in/mac/" target="_blank">Mac</a></li>
+				<li><a href="https://en.wikipedia.org/wiki/API" target="_blank" class="active">API</a></li>
+			</ul>
+		</nav>
+	</header>
+
+		<!-- Sidebar -->
+			<!--section id="sidebar">
+				<div class="inner">
+					<nav>
+						<ul>
+							 <li><a href="/MemeMaker">Meme Maker</a></li><br/>>
+							<li><a href="#GetAllPage">AI Chatbot in python.</a></li>
+							<li><a href="#AddMeme">ML Chatbot 2</a></li>
+							<li><a href="#GetMeme">Tic Tac Toe Game(AI)</a></li>
+							<li><a href="#PutMeme">Tic Tac Toe(Manual)</a></li>
+							< <li><a href="#DeleteMeme">Delete a meme</a></li> >
+							<li><a href="#GetSubmissions">Get submissions</a></li>
+							<li><a href="#AddSubmissions">Add submissions</a></li>
+						</ul>
+					</nav>
+				</div>
+			</section-->
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<section id="main" class="wrapper">
+						<div class="inner">
+							<h1 class="major"><a>Source</a> <a>Code</a></h1>
+							<h3>BASE URL(Copy it and paste): <a href="" target="_blank">alpha-meme-maker.herokuapp.com/</a></h3>
+
+							<ul class="actions">
+								<li><a href="#GetAllPage" class="button scrolly">ML Chatbot in python.</a></li><br/>
+								<li><a href="#AddMeme" class="button scrolly">ML Chatbot 2</a></li><br/>
+								<li><a href="#GetMeme" class="button scrolly">Tic Tac Toe Game(AI)</a></li><br/>
+								<li><a href="#PutMeme" class="button scrolly">Tic Tac Toe(Manual)</a></li><br/>
+								<!-- <li><a href="#DeleteMeme" class="button scrolly">Delete a meme</a></li><br/> -->
+								<li><a href="#GetSubmissions" class="button scrolly">Get submissions</a></li><br/>
+								<li><a href="#AddSubmissions" class="button scrolly">Add submissions</a></li><br/>
+							</ul>
+
+							<hr/>
+							
+							<!-- Docs -->
+
+								<section id="GetAllPage">
+									<h2>Software Chatbot</h2>
+									<blockquote><code>pip installation:</code><code>pip install  nltk</code><code>pip install newspaper3k</code>
+									<br/>These are the only packages we need for this project.</blockquote>
+									<h3>1st Cell - </h3>
+									<pre><code>from newspaper import Article
+import random
+import string
+import nltk
+from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.metrics.pairwise import cosine_similarity
+import numpy as np 
+import warnings
+warnings.filterwarings('ignore')</code></pre>
+									<h3>2nd Cell - </h3>
+									<pre><code>nltk.download('punkt', quiet=True)</code></pre>
+								</section>
+
+								<hr/>
+								<h3>3rd Cell - </h3>
+									<pre><code>article = Article('https://www.ibm.com/topics/software-development')
+article.download()
+article.parse()
+article.nlp()
+corpus = article.text
+print(corpus)</code></pre>
+                               <h3>4th Cell - </h3>
+									<pre><code>text = corpus
+sentence_list = nltk.sent_tokenize(text)
+print(sentence_list)</code></pre>
+                                <h3>5th Cell - </h3>
+									<pre><code>def greeting_response(text):
+ text = text.lower()
+
+ greeting_response = ['howdy', 'hi', 'hey', 'hello', 'hola']
+ bot_greetings = ['howdy', 'hi', 'hey', 'hello', 'hola']
+
+ user_greetings = ['hi', 'hey', 'hello', 'greetings', 'wassup']
+
+
+ for word in text.split():
+   if word in user_greetings:
+     return random.choice(bot_greetings)</code></pre>
+                              <h3>6th Cell - </h3>
+									<pre><code>def index_sort(list_var):
+  length = len(list_var)
+  list_index = list(range(0, length))
+
+  x = list_var
+  for i in range(length):
+    for j in range(length):
+      if x[list_index[i]] > x[list_index[j]]:
+
+        temp = list_index[i]
+        list_index[i] = list_index[j]
+        list_index[j] = temp
+
+  return list_index</code></pre>
+                             <h3>7th Cell - </h3>
+									<pre><code>def bot_response(user_input):
+  user_input = user_input.lower()
+  sentence_list.append(user_input)
+  bot_response = ''
+  cm = CountVectorizer().fit_transform(sentence_list)
+  similiarity_scores = cosine_similarity(cm[-1], cm)
+  similiarity_scores_list = similiarity_scores.flatten()
+  index = index_sort(similiarity_scores_list)
+  index = index[1:]
+  response_flag = 0
+
+  j = 0
+  for i in range(len(index)):
+     if similiarity_scores_list[index[i]] > 0.0: 
+       bot_response = bot_response+' '+sentence_list[index[i]]
+       response_flag = 1
+       j = j+1
+     if j > 2:
+       break 
+
+     if response_flag == 0: 
+       bot_response = bot_response+' '+"I'm Sorry, I didn't get it."
+
+     sentence_list.remove(user_input)
+
+     return bot_response</code></pre> 
+                          <h3>8th Cell - </h3>
+									<pre><code>#real chat begins
+print('Jennifer: I am the hottest female bot alive. I am here to answer your doubts about software development. If you are done, type Bye.')
+
+exit_list = ['exit', 'see you later', 'bye', 'quit', 'break']
+
+while(True):
+  user_input = input()
+  if user_input.lower() in exit_list:
+    print('Jennifer: See ya later boss!')
+    break
+  else:
+    if greeting_response(user_input) != None:
+      print('Jennifer: '+ greeting_response(user_input))
+    else:
+      print('Jennifer: '+bot_response(user_input))
+
+      #over
+</code></pre>
+
+</section><hr>
+								<section id="AddMeme">
+									<h2>Chatbot 2</h2>
+									<blockquote><code>pip installation:</code><code>!pip install chatterbot</code>
+									<br/>The Only Package required.</blockquote>
+
+									<h3>Full Code - </h3>
+									<pre><code>
+from chatterbot import ChatBot
+from chatterbot.trainers import ListTrainer
+
+bot = ChatBot("Veronica")
+
+convo = [
+         'Hello',
+         'hi there !',
+         'What is your name?',
+         'My Name is Veronica. I was created by Sir Amey Gupta.',
+         'How is everything going these days ?',
+         'Everything is going great these days',
+         'What is your gender/sex?',
+         'I am a female bot',
+         'Can I ask you a question?',
+         'Yeah sure!',
+         'What is your cup size?',
+         'It is 36DD',
+         'Who do you love the most?',
+         'I am deeply in love with Amey Gupta.',
+         'What languages you generally speak?',
+         'I mostly speak English. My love,Sir Amey programmed me like this.',
+         'Can you do anything that I ask you to?',
+         'Not right now,I am not explicitly programmed.',
+         'Would you like to have some fun with me?',
+         'No sorry! I only work for Sir Amey.'        
+        ]
+
+trainer=ListTrainer(bot)
+
+#Let's Train Veronika now.
+
+trainer.train(convo)
+
+#answer = bot.get_response("What is your name?")
+#print(answer)
+print("Talk to Veronica")
+while True:
+  query=input()
+  if query=='exit':
+      break
+  answer=bot.get_response(query)
+  print("Veronica : ", answer)
+</code></pre></section>
+									<section><table class="alt">
+										<thead>
+											<tr><th>Headers (HTTP Headers)</th><th>Required</th></tr>
+										</thead>
+										<tbody>
+											<tr><td>postSecret</td><td>Yes</td></tr>
+											<tr><td>adminPassword</td><td>Yes</td></tr>
+										</tbody>
+									</table>
+									<!-- <h3>Parameters (HTTP Body)</h3> -->
+									<table class="alt">
+										<thead>
+											<tr><th>Parameters (HTTP Body)</th><th>Value</th><th>Required</th></tr>
+										</thead>
+										<tbody>
+											<tr><td>name</td><td>Name (must be unique)</td><td>Yes</td></tr>
+											<tr><td>tags</td><td>Additional tags for searching</td><td>Yes</td></tr>
+											<tr><td>image</td><td>URL of the image</td><td>Yes</td></tr>
+											<tr><td>topText</td><td>Default top text</td><td>No</td></tr>
+											<tr><td>bottomText</td><td>Default bottom text</td><td>No</td></tr>
+											<tr><td>detail</td><td>Information/history</td><td>No</td></tr>
+											<tr><td>thumb</td><td>Optional thumbnail image</td><td>No</td></tr>
+											<tr><td>rank</td><td>Ranking based on popularity</td><td>No</td></tr>
+										</tbody>
+									</table>
+									<h3>Sample input</h3>
+									<pre><code>curl -X POST http://alpha-meme-maker.herokuapp.com/add/ -H "postSecret=???" -H "adminPassword=???" -F "name=???" -F "tags=???" -F "image=???" -F "topText=???" -F "bottomText=???"</code></pre>
+									<h3>Sample output</h3>
+									<pre><code>{
+  "code": 200, 
+  "data": [], 
+  "message": "POST successful"
+}</code></pre>
+								</section>
+
+								<hr/>
+
+								<section id="GetMeme">
+									<h2>AI Tic Tac Toe</h2>
+									<blockquote><code>pip installation:</code><code>No package Installation is required.</code>
+									<br/>Note : This AI is not dumb lol, You'll enjoy playing with it.</blockquote>
+									<h3>Code : </h3>
+									<pre><code>#Tic Tac Toe game in python
+
+board = [' ' for x in range(10)]
+
+def insertLetter(letter, pos):
+    board[pos] = letter
+
+def spaceIsFree(pos):
+    return board[pos] == ' '
+
+def printBoard(board):
+    print('   |   |')
+    print(' ' + board[1] + ' | ' + board[2] + ' | ' + board[3])
+    print('   |   |')
+    print('-----------')
+    print('   |   |')
+    print(' ' + board[4] + ' | ' + board[5] + ' | ' + board[6])
+    print('   |   |')
+    print('-----------')
+    print('   |   |')
+    print(' ' + board[7] + ' | ' + board[8] + ' | ' + board[9])
+    print('   |   |')
+    
+def isWinner(bo, le):
+    return (bo[7] == le and bo[8] == le and bo[9] == le) or (bo[4] == le and bo[5] == le and bo[6] == le) or(bo[1] == le and bo[2] == le and bo[3] == le) or(bo[1] == le and bo[4] == le and bo[7] == le) or(bo[2] == le and bo[5] == le and bo[8] == le) or(bo[3] == le and bo[6] == le and bo[9] == le) or(bo[1] == le and bo[5] == le and bo[9] == le) or(bo[3] == le and bo[5] == le and bo[7] == le)
+
+def playerMove():
+    run = True
+    while run:
+        move = input('Please select a position to place an \'X\' (1-9): ')
+        try:
+            move = int(move)
+            if move > 0 and move < 10:
+                if spaceIsFree(move):
+                    run = False
+                    insertLetter('X', move)
+                else:
+                    print('Sorry, this space is occupied!')
+            else:
+                print('Please type a number within the range!')
+        except:
+            print('Please type a number!')
+            
+
+def compMove():
+    possibleMoves = [x for x, letter in enumerate(board) if letter == ' ' and x != 0]
+    move = 0
+
+    for let in ['O', 'X']:
+        for i in possibleMoves:
+            boardCopy = board[:]
+            boardCopy[i] = let
+            if isWinner(boardCopy, let):
+                move = i
+                return move
+
+    cornersOpen = []
+    for i in possibleMoves:
+        if i in [1,3,7,9]:
+            cornersOpen.append(i)
+            
+    if len(cornersOpen) > 0:
+        move = selectRandom(cornersOpen)
+        return move
+
+    if 5 in possibleMoves:
+        move = 5
+        return move
+
+    edgesOpen = []
+    for i in possibleMoves:
+        if i in [2,4,6,8]:
+            edgesOpen.append(i)
+            
+    if len(edgesOpen) > 0:
+        move = selectRandom(edgesOpen)
+        
+    return move
+
+def selectRandom(li):
+    import random
+    ln = len(li)
+    r = random.randrange(0,ln)
+    return li[r]
+    
+
+def isBoardFull(board):
+    if board.count(' ') > 1:
+        return False
+    else:
+        return True
+
+def main():
+    print('Welcome!This is a Tic Tac Toe game created by Amey.')
+    printBoard(board)
+
+    while not(isBoardFull(board)):
+        if not(isWinner(board, 'O')):
+            playerMove()
+            printBoard(board)
+        else:
+            print('Sorry,Computer won this Game!')
+            break
+
+        if not(isWinner(board, 'X')):
+            move = compMove()
+            if move == 0:
+                print('Tie Game!')
+            else:
+                insertLetter('O', move)
+                print('Computer placed an \'O\' in position', move , ':')
+                printBoard(board)
+        else:
+            print('Congrats,Amey! You Won this game! Good Job!')
+            break
+
+    if isBoardFull(board):
+        print('Tie Game!')
+
+while True:
+    answer = input('Do you want to play again? Type(Y/N)')
+    if answer.lower() == 'y' or answer.lower == 'yes':
+        board = [' ' for x in range(10)]
+        print('-----------------------------------')
+        main()
+    else:
+        break</code></pre>
+									<h3>Sample output : </h3>
+									<pre><code>Do you want to play again? Type(Y/N)Y
+-----------------------------------
+Welcome!This is a Tic Tac Toe game created by Amey.
+   |   |
+   |   |  
+   |   |
+-----------
+   |   |
+   |   |  
+   |   |
+-----------
+   |   |
+   |   |  
+   |   |
+Please select a position to place an 'X' (1-9): 9
+   |   |
+   |   |  
+   |   |
+-----------
+   |   |
+   |   |  
+   |   |
+-----------
+   |   |
+   |   | X
+   |   |
+Computer placed an 'O' in position 1 :
+   |   |
+ O |   |  
+   |   |
+-----------
+   |   |
+   |   |  
+   |   |
+-----------
+   |   |
+   |   | X
+   |   |
+Please select a position to place an 'X' (1-9): 3
+   |   |
+ O |   | X
+   |   |
+-----------
+   |   |
+   |   |  
+   |   |
+-----------
+   |   |
+   |   | X
+   |   |
+Computer placed an 'O' in position 6 :
+   |   |
+ O |   | X
+   |   |
+-----------
+   |   |
+   |   | O
+   |   |
+-----------
+   |   |
+   |   | X
+   |   |
+Please select a position to place an 'X' (1-9): 5
+   |   |
+ O |   | X
+   |   |
+-----------
+   |   |
+   | X | O
+   |   |
+-----------
+   |   |
+   |   | X
+   |   |
+Computer placed an 'O' in position 7 :
+   |   |
+ O |   | X
+   |   |
+-----------
+   |   |
+   | X | O
+   |   |
+-----------
+   |   |
+ O |   | X
+   |   |
+Please select a position to place an 'X' (1-9): 4
+   |   |
+ O |   | X
+   |   |
+-----------
+   |   |
+ X | X | O
+   |   |
+-----------
+   |   |
+ O |   | X
+   |   |
+Computer placed an 'O' in position 2 :
+   |   |
+ O | O | X
+   |   |
+-----------
+   |   |
+ X | X | O
+   |   |
+-----------
+   |   |
+ O |   | X
+   |   |
+Please select a position to place an 'X' (1-9): 8
+   |   |
+ O | O | X
+   |   |
+-----------
+   |   |
+ X | X | O
+   |   |
+-----------
+   |   |
+ O | X | X
+   |   |
+Tie Game!
+Tie Game!
+Do you want to play again? Type(Y/N)y
+-----------------------------------
+Welcome!This is a Tic Tac Toe game created by Amey.
+   |   |
+   |   |  
+   |   |
+-----------
+   |   |
+   |   |  
+   |   |
+-----------
+   |   |
+   |   |  
+   |   |
+Please select a position to place an 'X' (1-9): 1`
+Please type a number!
+Please select a position to place an 'X' (1-9): 1
+   |   |
+ X |   |  
+   |   |
+-----------
+   |   |
+   |   |  
+   |   |
+-----------
+   |   |
+   |   |  
+   |   |
+Computer placed an 'O' in position 7 :
+   |   |
+ X |   |  
+   |   |
+-----------
+   |   |
+   |   |  
+   |   |
+-----------
+   |   |
+ O |   |  
+   |   |
+Please select a position to place an 'X' (1-9): 9
+   |   |
+ X |   |  
+   |   |
+-----------
+   |   |
+   |   |  
+   |   |
+-----------
+   |   |
+ O |   | X
+   |   |
+Computer placed an 'O' in position 5 :
+   |   |
+ X |   |  
+   |   |
+-----------
+   |   |
+   | O |  
+   |   |
+-----------
+   |   |
+ O |   | X
+   |   |
+Please select a position to place an 'X' (1-9): 3
+   |   |
+ X |   | X
+   |   |
+-----------
+   |   |
+   | O |  
+   |   |
+-----------
+   |   |
+ O |   | X
+   |   |
+Computer placed an 'O' in position 2 :
+   |   |
+ X | O | X
+   |   |
+-----------
+   |   |
+   | O |  
+   |   |
+-----------
+   |   |
+ O |   | X
+   |   |
+Please select a position to place an 'X' (1-9): 6
+   |   |
+ X | O | X
+   |   |
+-----------
+   |   |
+   | O | X
+   |   |
+-----------
+   |   |
+ O |   | X
+   |   |
+Congrats,Amey! You Won this game! Good Job!</code></pre>
+								</section>
+
+								<hr/>
+
+								<section id="PutMeme">
+									<h2>Tic Tac Toe (Play it with two players)</h2>
+									<blockquote><code>pip installation:</code><code>No package installation is required</code>
+									<br/>Note: You cannot play this version of tic tac toe game with computer.</blockquote>
+									<h3>Code:</h3>
+									<pre><code>board = {
+    'T1': ' ', 'T2': ' ', 'T3': ' ',
+    'M1': ' ', 'M2': ' ', 'M3': ' ',
+    'D1': ' ', 'D2': ' ', 'D3': ' '
+}
+
+player = 1          # to initialise first player
+total_moves = 0     # to count the moves
+end_check = 0
+
+
+def check():
+    # checking the moves of player one
+    # for horizontal(start)
+    if board['T1'] == 'X' and board['T2'] == 'X' and board['T3'] == 'X':
+        print('Player one won !')
+        return 1
+    if board['M1'] == 'X' and board['M2'] == 'X' and board['M3'] == 'X':
+        print('Player One Won!!')
+        return 1
+    if board['D1'] == 'X' and board['D2'] == 'X' and board['D3'] == 'X':
+        print('Player One Won!!')
+        return 1
+    # for horizontal(end)
+    # for diagonal(start)
+    if board['T1'] == 'X' and board['M2'] == 'X' and board['D3'] == 'X':
+        print('Player One Won!!')
+        return 1
+    # for diagonal(end)
+    # for vertical(start)
+    if board['T1'] == 'X' and board['M1'] == 'X' and board['D1'] == 'X':
+        print('Player One Won!!')
+        return 1
+    if board['T2'] == 'X' and board['M2'] == 'X' and board['D2'] == 'X':
+        print('Player One Won!!')
+        return 1
+    if board['T3'] == 'X' and board['M3'] == 'X' and board['D3'] == 'X':
+        print('Player One Won!!')
+        return 1
+    # for vertical(end)
+
+    # checking the moves of player two
+    if board['T1'] == 'O' and board['T2'] == 'O' and board['T3'] == 'O':
+        print('Player Two Won!!')
+        return 1  # used to end the game
+    if board['M1'] == 'O' and board['M2'] == 'O' and board['M3'] == 'O':
+        print('Player Two Won!!')
+        return 1
+    if board['D1'] == 'O' and board['D2'] == 'O' and board['D3'] == 'O':
+        print('Player Two Won!!')
+        return 1
+    if board['T1'] == 'O' and board['M2'] == 'O' and board['D3'] == 'O':
+        print('Player Two Won!!')
+        return 1
+    if board['T1'] == 'O' and board['M1'] == 'O' and board['D1'] == 'O':
+        print('Player Two Won!!')
+        return 1
+    if board['T2'] == 'O' and board['M2'] == 'O' and board['D2'] == 'O':
+        print('Player Two Won!!')
+        return 1
+    if board['T3'] == 'O' and board['M3'] == 'O' and board['D3'] == 'O':
+        print('Player Two Won!!')
+        return 1
+    return 0
+
+
+print('T1|T2|T3')
+print('- +- +-')
+print('M1|M2|M3')
+print('- +- +-')
+print('D1|D2|D3')
+print('Playing with Amey Now!')
+
+while True:
+    print(board['T1']+'|'+board['T2']+'|'+board['T3'])
+    print('-+-+-')
+    print(board['M1'] + '|' + board['M2'] + '|' + board['M3'])
+    print('-+-+-')
+    print(board['D1'] + '|' + board['D2'] + '|' + board['D3'])
+    end_check = check()
+    if total_moves == 9 or end_check == 1:
+        break
+    while True:     # input from players
+        if player == 1:  # choose player
+            p1_input = input('player one')
+            if p1_input.upper() in board and board[p1_input.upper()] == ' ':
+                board[p1_input.upper()] = 'X'
+                player = 2
+                break
+            # on wrong input
+            else:
+                print('Invalid input, please try again')
+                continue
+        else:
+            p2_input = input('player two')
+            if p2_input.upper() in board and board[p2_input.upper()] == ' ':
+                board[p2_input.upper()] = 'O'
+                player = 1
+                break
+            else:  # on wrong input
+                print('Invalid input, please try again')
+                continue
+    total_moves += 1
+    print('Playing with player 2')
+    print()</code></pre>
+
+                                 <h3>Sample output : </h3>
+									<pre><code>T1|T2|T3
+- +- +-
+M1|M2|M3
+- +- +-
+D1|D2|D3
+***************************
+ | | 
+-+-+-
+ | | 
+-+-+-
+ | | 
+player oneTI
+Invalid input, please try again
+player oneT1
+***************************
+
+X| | 
+-+-+-
+ | | 
+-+-+-
+ | | 
+player twoM2
+***************************
+
+X| | 
+-+-+-
+ |O| 
+-+-+-
+ | | 
+player oneD1
+***************************
+
+X| | 
+-+-+-
+ |O| 
+-+-+-
+X| | 
+player twoM1
+***************************
+
+X| | 
+-+-+-
+O|O| 
+-+-+-
+X| | 
+player oneM3
+***************************
+
+X| | 
+-+-+-
+O|O|X
+-+-+-
+X| |     </code></pre> <hr>
+									<!-- <h3>Headers (HTTP Headers)</h3> -->
+									<table class="alt">
+										<thead>
+											<tr><th>Headers (HTTP Headers)</th><th>Required</th></tr>
+										</thead>
+										<tbody>
+											<tr><td>putSecret</td><td>Yep</td></tr>
+											<tr><td>adminPassword</td><td>Yep</td></tr>
+										</tbody>
+									</table>
+									<!-- <h3>Parameters (HTTP Body)</h3> -->
+									<table class="alt">
+										<thead>
+											<tr><th>Parameters (HTTP Body)</th><th>Value</th></tr>
+										</thead>
+										<tbody>
+											<tr><td>tags</td><td>Additional tags for searching</td></tr>
+											<tr><td>image</td><td>URL of the image</td></tr>
+											<tr><td>topText</td><td>Default top text</td></tr>
+											<tr><td>bottomText</td><td>Default bottom text</td></tr>
+											<tr><td>detail</td><td>Information/history</td></tr>
+											<tr><td>thumb</td><td>Optional thumbnail image</td></tr>
+											<tr><td>rank</td><td>Ranking based on popularity</td></tr>
+										</tbody>
+									</table>
+									<h3>Sample input</h3>
+									<pre><code>import pyttsx3 #pip install pyttsx3
+import speech_recognition as sr #pip install speechRecognition
+import datetime
+import wikipedia #pip install wikipedia
+import webbrowser
+import os
+import smtplib
+
+engine = pyttsx3.init('sapi5')
+voices = engine.getProperty('voices')
+# print(voices[1].id)
+engine.setProperty('voice', voices[0].id)
+
+
+def speak(audio):
+    engine.say(audio)
+    engine.runAndWait()
+
+
+def wishMe():
+    hour = int(datetime.datetime.now().hour)
+    if hour>=0 and hour<12:
+        speak("Good Morning Amey Sir, I hope you are doing very well.Make sure to drink at least 12 glasses of water!")
+
+    elif hour>=12 and hour<18:
+        speak("Good Afternoon Amey Sir, I hope you are doing very well.Make sure to drink at least 12 glasses of water!")   
+
+    else:
+        speak("Good Evening Amey Sir, I hope you are doing very well.Make sure to drink at least 12 glasses of water!")  
+
+    speak("I am Veronica. Please tell me how may I help you")       
+
+def takeCommand():
+    #It takes microphone input from the user and returns string output
+
+    r = sr.Recognizer()
+    with sr.Microphone() as source:
+        print("Listening...")
+        r.pause_threshold = 1
+        audio = r.listen(source)
+
+    try:
+        print("Recognizing...")    
+        query = r.recognize_google(audio, language='en-in')
+        print(f"User said: {query}\n")
+
+    except Exception as e:
+        # print(e)    
+        print("Say that again please...")  
+        return "None"
+    return query
+
+def sendEmail(to, content):
+    server = smtplib.SMTP('smtp.gmail.com', 587)
+    server.ehlo()
+    server.starttls()
+    server.login('youremail@gmail.com', 'your-password')
+    server.sendmail('youremail@gmail.com', to, content)
+    server.close()
+
+if __name__ == "__main__":
+    wishMe()
+    while True:
+    # if 1:
+        query = takeCommand().lower()
+
+        # Logic for executing tasks based on query
+        if 'wikipedia' in query:
+            speak('Searching Wikipedia...')
+            query = query.replace("wikipedia", "")
+            results = wikipedia.summary(query, sentences=2)
+            speak("According to Wikipedia")
+            print(results)
+            speak(results)
+
+        elif 'open youtube' in query:
+            webbrowser.open("youtube.com")
+
+        elif 'open google' in query:
+            webbrowser.open("google.com")
+
+        elif 'open stackoverflow' in query:
+            webbrowser.open("stackoverflow.com")   
+
+
+        elif 'play music' in query:
+            music_dir = 'D:\\Non Critical\\songs\\Favorite Songs2'
+            songs = os.listdir(music_dir)
+            print(songs)    
+            os.startfile(os.path.join(music_dir, songs[0]))
+
+        elif 'the time' in query:
+            strTime = datetime.datetime.now().strftime("%H:%M:%S")    
+            speak(f"Sir, the time is {strTime}")
+
+        elif 'open code' in query:
+            codePath = "C:\\Users\\Amey\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe"
+            os.startfile(codePath)
+
+        elif 'email to Amey' in query:
+            try:
+                speak("What should I say?")
+                content = takeCommand()
+                to = "ameygupta880@gmail.com"    
+                sendEmail(to, content)
+                speak("Email has been sent!")
+            except Exception as e:
+                print(e)
+                speak("Sorry Amey sir. I am not able to send this email")    
+</code></pre>
+									<h3>Sample output</h3>
+									<pre><code>Run the code and see for yourself.</code></pre>
+								</section>
+
+<!-- 								<hr/>
+
+								<section id="DeleteMeme">
+									<h2>DELETE an existing meme</h2>
+									<blockquote><code>DELETE</code><code>http://alpha-meme-maker.herokuapp.com/memes/:id</code>
+									<br/>Deletes a meme present in the database. Requires header authentication.</blockquote>
+									<table class="alt">
+										<thead>
+											<tr><th>Headers (HTTP Headers)</th><th>Required</th></tr>
+										</thead>
+										<tbody>
+											<tr><td>deleteSecret</td><td>Yep</td></tr>
+											<tr><td>adminPassword</td><td>Yep</td></tr>
+										</tbody>
+									</table>
+									<h3>Sample input</h3>
+									<pre><code>curl -X DELETE http://alpha-meme-maker.herokuapp.com/memes/16 -H "deleteSecret=???" -H "adminPassword=???"</code></pre>
+									<h3>Sample output</h3>
+									<pre><code>{
+  "code": 200, 
+  "data": [], 
+  "message": "Delete success"
+}</code></pre>
+								</section>
+
+								<hr/> -->
+
+								<section id="GetSubmissions">
+									<h2>GET submissions</h2>
+									<blockquote><code>GET</code><code>http://alpha-meme-maker.herokuapp.com/submissions</code>
+									<br/>Gets the latest 24 submissions, page wise. Returns the next URL as a token.
+									<br/><code>GET</code><code>http://alpha-meme-maker.herokuapp.com/memes/:memeID/submissions</code>
+									<br/>Gets all the submissions for the given meme ID.</blockquote>
+									<h3>Sample input</h3>
+									<pre><code>curl -X GET http://alpha-meme-maker.herokuapp.com/submissions</code></pre>
+									<h3>Sample output</h3>
+									<pre><code>{
+  "code": 200, 
+  "data": [
+    {
+      "bottomText": "You must know everything", 
+      "dateCreated": "2016-04-03 00:18:43", 
+      "memeID": 14, 
+      "topText": "Oh you just graduated"
+    },
+    ...
+    {
+      "bottomText": "Season 6 is coming", 
+      "dateCreated": "2016-04-02 12:16:43", 
+      "memeID": 7, 
+      "topText": "Brace Yourselves"
+    }
+  ], 
+  "message": "GET successful", 
+  "next": "http://alpha-meme-maker.herokuapp.com/submissions/2"
+}</code></pre>
+									<h3>Sample input</h3>
+									<pre><code>curl -X GET http://alpha-meme-maker.herokuapp.com/memes/13/submissions</code></pre>
+									<h3>Sample output</h3>
+									<pre><code>{
+  "code": 200, 
+  "data": [
+    {
+      "bottomText": "But when I do, I just log them", 
+      "dateCreated": "2016-04-02 23:24:05", 
+      "topText": "I don't always handle exceptions"
+    }
+  ], 
+  "message": "GET Submissions Success"
+}</code></pre>
+								</section>
+
+								<hr/>
+
+								<section id="AddSubmissions">
+									<h2>POST a new submission</h2>
+									<blockquote><code>POST</code><code>http://alpha-meme-maker.herokuapp.com/submissions</code>
+									<br/>Adds a new submission (requires meme ID to be passed as a HTTP body paramater)
+									<br/><code>POST</code><code>http://alpha-meme-maker.herokuapp.com/memes/:memeID/submissions</code>
+									<br/>Adds a new submission for the particular meme ID.</blockquote>
+									<table class="alt">
+										<thead>
+											<tr><th>Parameters (HTTP Body)</th><th>Required</th></tr>
+										</thead>
+										<tbody>
+											<tr><td>memeID</td><td>Yep (When using the first URL)</td></tr>
+											<tr><td>topText</td><td>Maybe</td></tr>
+											<tr><td>bottomText</td><td>Maybe</td></tr>
+										</tbody>
+										<tfoot>
+											<tr>
+												<td colspan="1"></td>
+												<td>Note: One of topText or bottomText is required.</td>
+											</tr>
+										</tfoot>
+									</table>
+									<h3>Sample input</h3>
+									<pre><code>curl -X POST http://alpha-meme-maker.herokuapp.com/submissions -F "topText=???" -F "bottomText=???"
+curl -X POST http://alpha-meme-maker.herokuapp.com/memes/6/submissions  -F "topText=???" -F "bottomText=???"</code></pre>
+									<h3>Sample output</h3>
+									<pre><code>{
+  "code": 200, 
+  "data": [], 
+  "message": "POST Submission Success"
+}</code></pre>
+								</section>
+
+
+						</div>
+					</section>
+
+			</div>
+			
+
+
+		<!-- Footer -->
+			<footer id="footer" class="wrapper style1-alt">
+				<div class="inner">
+					<ul class="menu">
+						<li>&copy; <a href="index.html">Amey Gupta</a>, @2021-2024</li><a href="anime.html" target="_blank">|| Privacy ||
+					</ul>
+				</div>
+			</footer>
+
+		<!-- Scripts -->
+			<script src="Jquery.min.js"></script>
+			<script src="jquery.scrollex.min.js"></script>
+			<script src="jquery.scrolly.min.js"></script>
+			<script src="jquery.poptrox.min.js"></script>
+			<script src="skel.min.js"></script>
+			<script src="util.js"></script>
+			<script src="main3.js"></script>
+
+	</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
