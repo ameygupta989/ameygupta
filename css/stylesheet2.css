@@ -91,3 +91,28 @@ body{
   padding: 50px;
   border-radius: 8px;
 }
+.pricing .btn{
+    margin-left: 80px;
+    padding: 10px 7px;
+    width: 70%;
+    border: none;
+    outline: none;
+    background: #4cd137;
+    color: #ffffff;
+    font-size: 16px;
+    border-radius: 8px;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: .5s ease;
+}
+
+.btn:hover{
+    transform: rotate(360deg);
+}
+.img-sec{
+    float: right;
+}
+
+.img-sec img{
+    height: 300px;
+}    
