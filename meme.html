@@ -977,64 +977,268 @@ if __name__ == "__main__":
 								<hr/> -->
 
 								<section id="GetSubmissions">
-									<h2>GET submissions</h2>
-									<blockquote><code>GET</code><code>http://alpha-meme-maker.herokuapp.com/submissions</code>
-									<br/>Gets the latest 24 submissions, page wise. Returns the next URL as a token.
-									<br/><code>GET</code><code>http://alpha-meme-maker.herokuapp.com/memes/:memeID/submissions</code>
-									<br/>Gets all the submissions for the given meme ID.</blockquote>
-									<h3>Sample input</h3>
-									<pre><code>curl -X GET http://alpha-meme-maker.herokuapp.com/submissions</code></pre>
+									<h2>Sudoku Game</h2>
+									<blockquote><code>1st file name</code><code>sudoku.py</code>
+									<br/>It's a basic python game.</code>
+									<br/><code>2nd file name</code><code>sudoku_empty.py</code>
+									<br/>Ignore all the # comments.</blockquote>
+									<h3>Code (1st file)</h3>
+									<pre><code>############################################################
+# OPTIONAL HELPER FUNCTIONS
+############################################################
+
+def find_next_empty(puzzle):
+    # finds the next row, col on puzzle that's not filled yet --> we represent these with -1
+    # returns a row, col tuple (or (None, None) if there is none)
+    pass
+
+def is_valid(puzzle, guess, row, col):
+    # figures out whether the guess at the row/col of the puzzle is a valid guess
+    # returns True or False
+    pass
+
+############################################################
+# SOLVER IMPLEMENTATION
+############################################################
+
+def solve_sudoku(puzzle):
+    # solve sudoku using backtracking!
+    # our puzzle is a list of lists, where each inner list is a row in our sudoku puzzle
+    # return solution
+
+    # step 1: choose somewhere on the puzzle to make a guess
+    # step 1.1: if there's nowhere left, then we're done because we only allowed valid inputs
+    # step 2: if there is a place to put a number, then make a guess between 1 and 9
+    # step 3: check if this is a valid guess
+    # step 3.1: if this is a valid guess, then place it at that spot on the puzzle
+    # step 4: then we recursively call our solver!
+    # step 5: it not valid or if nothing gets returned true, then we need to backtrack and try a new number
+    # step 6: if none of the numbers that we try work, then this puzzle is UNSOLVABLE!!
+    pass</code></pre>
+									<h3>Code (2nd file)</h3>
+									<pre><code>from pprint import pprint
+
+
+def find_next_empty(puzzle):
+    # finds the next row, col on the puzzle that's not filled yet --> rep with -1
+    # return row, col tuple (or (None, None) if there is none)
+
+    # keep in mind that we are using 0-8 for our indices
+    for r in range(9):
+        for c in range(9): # range(9) is 0, 1, 2, ... 8
+            if puzzle[r][c] == -1:
+                return r, c
+
+    return None, None  # if no spaces in the puzzle are empty (-1)
+
+def is_valid(puzzle, guess, row, col):
+    # figures out whether the guess at the row/col of the puzzle is a valid guess
+    # returns True or False
+
+    # for a guess to be valid, then we need to follow the sudoku rules
+    # that number must not be repeated in the row, column, or 3x3 square that it appears in
+
+    # let's start with the row
+    row_vals = puzzle[row]
+    if guess in row_vals:
+        return False # if we've repeated, then our guess is not valid!
+
+    # now the column
+    # col_vals = []
+    # for i in range(9):
+    #     col_vals.append(puzzle[i][col])
+    col_vals = [puzzle[i][col] for i in range(9)]
+    if guess in col_vals:
+        return False
+
+    # and then the square
+    row_start = (row // 3) * 3 # 10 // 3 = 3, 5 // 3 = 1, 1 // 3 = 0
+    col_start = (col // 3) * 3
+
+    for r in range(row_start, row_start + 3):
+        for c in range(col_start, col_start + 3):
+            if puzzle[r][c] == guess:
+                return False
+
+    return True
+
+def solve_sudoku(puzzle):
+    # solve sudoku using backtracking!
+    # our puzzle is a list of lists, where each inner list is a row in our sudoku puzzle
+    # return whether a solution exists
+    # mutates puzzle to be the solution (if solution exists)
+    
+    # step 1: choose somewhere on the puzzle to make a guess
+    row, col = find_next_empty(puzzle)
+
+    # step 1.1: if there's nowhere left, then we're done because we only allowed valid inputs
+    if row is None:  # this is true if our find_next_empty function returns None, None
+        return True 
+    
+    # step 2: if there is a place to put a number, then make a guess between 1 and 9
+    for guess in range(1, 10): # range(1, 10) is 1, 2, 3, ... 9
+        # step 3: check if this is a valid guess
+        if is_valid(puzzle, guess, row, col):
+            # step 3.1: if this is a valid guess, then place it at that spot on the puzzle
+            puzzle[row][col] = guess
+            # step 4: then we recursively call our solver!
+            if solve_sudoku(puzzle):
+                return True
+        
+        # step 5: it not valid or if nothing gets returned true, then we need to backtrack and try a new number
+        puzzle[row][col] = -1
+
+    # step 6: if none of the numbers that we try work, then this puzzle is UNSOLVABLE!!
+    return False
+
+if __name__ == '__main__':
+    example_board = [
+        [3, 9, -1,   -1, 5, -1,   -1, -1, -1],
+        [-1, -1, -1,   2, -1, -1,   -1, -1, 5],
+        [-1, -1, -1,   7, 1, 9,   -1, 8, -1],
+
+        [-1, 5, -1,   -1, 6, 8,   -1, -1, -1],
+        [2, -1, 6,   -1, -1, 3,   -1, -1, -1],
+        [-1, -1, -1,   -1, -1, -1,   -1, -1, 4],
+
+        [5, -1, -1,   -1, -1, -1,   -1, -1, -1],
+        [6, 7, -1,   1, -1, 5,   -1, 4, -1],
+        [1, -1, 9,   -1, -1, -1,   2, -1, -1]
+    ]
+    print(solve_sudoku(example_board))
+    pprint(example_board)</code></pre>
+									<h3>Local host 3310:</h3>
+									<pre><code>curl -X GET https://4anime.biz/watch/naruto-shippuden-dub-yNkG-episode-500/</code></pre>
 									<h3>Sample output</h3>
-									<pre><code>{
-  "code": 200, 
-  "data": [
-    {
-      "bottomText": "You must know everything", 
-      "dateCreated": "2016-04-03 00:18:43", 
-      "memeID": 14, 
-      "topText": "Oh you just graduated"
-    },
-    ...
-    {
-      "bottomText": "Season 6 is coming", 
-      "dateCreated": "2016-04-02 12:16:43", 
-      "memeID": 7, 
-      "topText": "Brace Yourselves"
-    }
-  ], 
-  "message": "GET successful", 
-  "next": "http://alpha-meme-maker.herokuapp.com/submissions/2"
-}</code></pre>
-									<h3>Sample input</h3>
-									<pre><code>curl -X GET http://alpha-meme-maker.herokuapp.com/memes/13/submissions</code></pre>
-									<h3>Sample output</h3>
-									<pre><code>{
-  "code": 200, 
-  "data": [
-    {
-      "bottomText": "But when I do, I just log them", 
-      "dateCreated": "2016-04-02 23:24:05", 
-      "topText": "I don't always handle exceptions"
-    }
-  ], 
-  "message": "GET Submissions Success"
-}</code></pre>
+									<pre><code>Naruto: Shippuden (Dub) Episode 500 English Dubbed at 4Anime
+It has been two and a half years since Naruto Uzumaki left Konohagakure, the Hidden Leaf Village, for intense training following events which fueled his desire to be stronger. Now... More info
+
+Please help us by sharing this (4anime.biz) site with your friends. It's the biggest motivation to help us to make the site better. Thanks!.
+
+  
+TwitterFacebookWhatsAppPinterestTelegramEmailMore1
+If current server doesn't work please try other servers below.
+ 
+1 - 150
+151 - 300
+301 - 450
+451 - 500
+
+    
+You may also like
+Code Geass: Lelouch of the Rebellion R2 (Dub)
+Code Geass: Lelouch of the Rebellion R2 (Dub)
+Episode 25 2008 TV Series
+One year has passed since the Black Rebellion, a failed uprising against the Holy Britannian Empire led by the masked vigilante Zero, who is now missing. At a loss without their revolutionary leader, Area 11's resistance group—the Black Knights—find themselves too powerless to combat the brutality inflicted upon the Elevens…
+
+Genres: Action Drama Sci-Fi
+Samurai X: Trust and Betrayal (Dub)
+Samurai X: Trust and Betrayal (Dub)
+Episode 4 1999 OVA
+When mankind's savagery surpasses his fear of death, there is little hope for those who wish to live honest lives. Beneath a full moon, a young boy witnesses the murder of the bandits who had enslaved him, and is then christened with a new name by the man who rescued him. This boy is Shinta, now known as Kenshin Himura,…
+
+Genres: Action Drama Historical
+Code Geass: Lelouch of the Rebellion (Dub)
+Code Geass: Lelouch of the Rebellion (Dub)
+Episode 25 2006 TV Series
+In the year 2010, the Holy Empire of Britannia is establishing itself as a dominant military nation, starting with the conquest of Japan. Renamed to Area 11 after its swift defeat, Japan has seen significant resistance against these tyrants in an attempt to regain independence. Lelouch Lamperouge, a Britannian student,…
+
+Genres: Action Drama Sci-Fi
+Naruto (Dub)
+Naruto (Dub)
+Episode 220 2002 TV Series
+Moments prior to Naruto Uzumaki's birth, a huge demon known as the Kyuubi, the Nine-Tailed Fox, attacked Konohagakure, the Hidden Leaf Village, and wreaked havoc. In order to put an end to the Kyuubi's rampage, the leader of the village, the Fourth Hokage, sacrificed his life and sealed the monstrous beast inside the newborn…
+
+Genres: Action Adventure Comedy
+Naruto: Shippuden
+Naruto: Shippuden
+Episode 500 2007 TV Series
+It has been two and a half years since Naruto Uzumaki left Konohagakure, the Hidden Leaf Village, for intense training following events which fueled his desire to be stronger. Now Akatsuki, the mysterious organization of elite rogue ninja, is closing in on their grand plan which may threaten the safety of the entire shinobi…
+
+Genres: Action Adventure Comedy
+Dragon Ball Z (Dub)
+Dragon Ball Z (Dub)
+Episode 291 1989 TV Series
+Five years after winning the World Martial Arts tournament, Gokuu is now living a peaceful life with his wife and son. This changes, however, with the arrival of a mysterious enemy named Raditz who presents himself as Gokuu's long-lost brother. He reveals that Gokuu is a warrior from the once powerful but now virtually…
+
+Genres: Action Adventure Comedy
+Pokémon (Dub)
+Pokémon (Dub)
+Episode 276 1997 TV Series
+Pokemon are peculiar creatures with a vast array of different abilities and appearances; many people, known as Pokemon trainers, capture and train them, often with the intent of battling others. Young Satoshi has not only dreamed of becoming a Pokemon trainer but also a "Pokemon Master," and on the arrival of his 10th…
+
+Genres: Action Adventure Comedy
+Pokemon Diamond & Pearl (Dub)
+Pokemon Diamond & Pearl (Dub)
+Episode 189 2006 TV Series
+Following the end of Satoshi's Hoenn journey, he travels to the Sinnoh region for his next adventure en route to becoming a Pokémon Master. Immediately upon arrival, Team Rocket makes another attempt to snatch Pikachu, only for it to fail once again. However, Pikachu has fallen deep into a forest and it's up to Satoshi…
+
+Genres: Action Adventure Comedy
+Pokemon: Advanced (Dub)
+Pokemon: Advanced (Dub)
+Episode 192 2002 TV Series
+After participating in the Johto League, Satoshi decides to begin anew in yet another journey; this time by himself and Pikachu, in the land of Houen. Though he isn't alone for long, as 10-year-old Haruka (whom dislikes Pokemon, but just wants to come along to see the world) travels with him after Pikachu destroys her…
+
+Genres: Action Adventure Comedy
+Pokemon: Arceus and the Jewel of Life (Dub)
+Pokemon: Arceus and the Jewel of Life (Dub)
+Full 2009 Movies
+In ages long forgotten, when Earth found itself on a collision course with a meteor, Legendary Pokémon Arceus used its power to avert the danger. However, this feat caused the 16 Plates surrounding it to scatter across the world. Without the Plates providing Arceus with life energy, it began to die. A human named Damon…
+
+Genres: Action Adventure Comedy
+Pokemon the Movie: Genesect and the Legend Awakened (Dub)
+Pokemon the Movie: Genesect and the Legend Awakened (Dub)
+Full 2013 Movies
+The homeland of the Genesect exists no more. After three hundred million years, the snowy mountains where the Paleozoic Pokemon once lived are no longer habitable-- but not all of the race are actually extinct. Several specimen are still alive and - confused and distressed - are desperate to find a new place to call home.…
+
+Genres: Action Adventure Comedy
+Pokemon: Giratina and the Sky Warrior (Dub)
+Pokemon: Giratina and the Sky Warrior (Dub)
+Full 2008 Movies
+The legendary Renegade Pokémon, Giratina, encounters the Temporal Pokémon Dialga by a lake and successfully manages to drag Dialga into its home—an alternate dimension separate from the normal world. But a small green Pokémon gets gotten dragged in as well—and though it somehow escapes, Dialga uses this opportunity to…
+
+Genres: Action Adventure Fantasy
+Pokemon: Jirachi Wishmaker (Dub)
+Pokemon: Jirachi Wishmaker (Dub)
+Full 2003 Movies
+This is the 6th Movie. Satoshi, Haruka, Takeshi, and Masato come upon the festival of the Wishing Star of Seven Nights. During their enjoyment, the legendary pokemon, Jirachi, decends from the heavens and befriends Masato. Jirachi, with the power to grant any wish, is sought after by many people wanting to claim its power.…
+
+Genres: Adventure Comedy Drama
+Pokemon the Movie: Kyurem VS. The Sword of Justice (Dub)
+Pokemon the Movie: Kyurem VS. The Sword of Justice (Dub)
+Full 2012 Movies
+Mythical Pokémon Keldeo wishes to join the Swords of Justice, a group of Pokémon traveling around the world, helping out those in need. To do so he must first harness the power of his horn and learn the move Sacred Sword, and he decides to challenge Kyurem, a Legendary Dragon residing in an abandoned mine located within…
+
+Genres: Action Adventure Comedy
+Pokemon: Lucario and the Mystery of Mew (Dub)
+Pokemon: Lucario and the Mystery of Mew (Dub)
+Full 2005 Movies
+This is the 8th Movie. In the town of Lohta, a festival is thrown praising "Aaron the Wave Leader Hero" who, according to the legend passed down through the town's generations, stopped a war centuries ago by using the power of "the Tree of the World's Origin." Satoshi and Pikachu participate in a battle to decide this…
+
+Genres: Action Adventure Drama
+Watch Anime Streaming Online Subbed & Dubbed. Watch Several Thousand Anime Online for free only at 4Anime.biz. We have a variety of Animes you can choose from and all Anime are available in HD and work on mobile iPhone and Android.
+
+4Anime - Terms of service - Contact - Sitemap
+4Anime (4anime.biz) does not store any files on our server, we only linked to the media which is hosted on 3rd party services.Logo footer
+© 4Anime.
+
+</code></pre>
 								</section>
 
 								<hr/>
 
 								<section id="AddSubmissions">
-									<h2>POST a new submission</h2>
-									<blockquote><code>POST</code><code>http://alpha-meme-maker.herokuapp.com/submissions</code>
-									<br/>Adds a new submission (requires meme ID to be passed as a HTTP body paramater)
-									<br/><code>POST</code><code>http://alpha-meme-maker.herokuapp.com/memes/:memeID/submissions</code>
-									<br/>Adds a new submission for the particular meme ID.</blockquote>
+									<h2>Yet to come.</h2>
+									<blockquote><code>POST</code><code>https://ameygupta989.github.io/ameygupta/meme.html</code>
+									<br/>Add a new submission (requires software ID to be passed as a HTTP body paramater)
+									<br/><code>POST</code><code>https://ameygupta989.github.io/ameygupta/meme.html</code>
+									<br/>Add a 2nd submission for the particular software ID.</blockquote>
 									<table class="alt">
 										<thead>
 											<tr><th>Parameters (HTTP Body)</th><th>Required</th></tr>
 										</thead>
 										<tbody>
-											<tr><td>memeID</td><td>Yep (When using the first URL)</td></tr>
+											<tr><td>SoftwareID@amey9</td><td>Yes (When using the first URL)</td></tr>
 											<tr><td>topText</td><td>Maybe</td></tr>
 											<tr><td>bottomText</td><td>Maybe</td></tr>
 										</tbody>
@@ -1046,12 +1250,11 @@ if __name__ == "__main__":
 										</tfoot>
 									</table>
 									<h3>Sample input</h3>
-									<pre><code>curl -X POST http://alpha-meme-maker.herokuapp.com/submissions -F "topText=???" -F "bottomText=???"
-curl -X POST http://alpha-meme-maker.herokuapp.com/memes/6/submissions  -F "topText=???" -F "bottomText=???"</code></pre>
+									<pre><code>curl -X POST https://ameygupta989.github.io/ameygupta/meme.html -F "topText=???" -F "bottomText=???"</code></pre>
 									<h3>Sample output</h3>
 									<pre><code>{
-  "code": 200, 
-  "data": [], 
+  "code": 69420, 
+  "data": [amey's website, startup guides, music, anime], 
   "message": "POST Submission Success"
 }</code></pre>
 								</section>
